@@ -1,0 +1,21 @@
+<section>
+    <article>
+        <h3>Interpolação</h3>
+
+        <p>String renderizada com interpolação: {{ url }} </p>
+        <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>
+        <p>Resultado de 2 + 2 é: {{ soma(2,2) }}</p>
+        <p>É verdade que da pra interpolar expressões booleanas? {{ cursoAngular && getCurtirCurso() }}</p>
+        <img src="{{ urlImagem }}" alt="Imagem">
+
+    </article>
+    <br>
+    <article>
+        
+        <h3>Property Binding</h3>
+
+        <img [src]="urlImagem" alt="Imagem">
+        <img bind-src="urlImagem" alt="Imagem">
+
+    </article>
+</section>
