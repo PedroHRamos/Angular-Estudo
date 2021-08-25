@@ -1,5 +1,6 @@
 <section>
     <article>
+
         <h3>Interpolação</h3>
 
         <p>String renderizada com interpolação: {{ url }} </p>
@@ -16,6 +17,33 @@
 
         <img [src]="urlImagem" alt="Imagem">
         <img bind-src="urlImagem" alt="Imagem">
+
+    </article>
+    <br>
+    <article>
+        
+        <h3>Class e Style Binding</h3>
+
+        <select #classe (change)="0">
+            <option value="alert-success">Sucessso</option>
+            <option value="alert-info">Info</option>
+            <option value="alert-warning">Alerta</option>
+            <option value="alert-danger">Erro</option>
+        </select>
+        <br><br>
+
+        <div class="alert {{ classe.value }}" role="alert">Texto colorido de acordo comm o escolhido</div>
+
+        <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success' " >Sucessso</div>
+        <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info' " >Info</div>
+        <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning' " >Alerta</div>
+        <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger' " >Erro</div>
+        
+        <br>
+
+        <div class="alert alert-danger" role="alert" [style.display]="classe.value == 'alert-danger' ? 'block' : 'none' ">
+            Essse texto deve aparecer somente em caso de erro.
+        </div>
 
     </article>
 </section>
