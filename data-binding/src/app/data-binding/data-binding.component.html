@@ -1,5 +1,24 @@
 <section>
+
     <article>
+
+        <h3 class="mt-3">Escolha o que estudar:</h3>
+
+        <select #estudo (change)="0" class="form-select">
+            <option value="batata"></option>
+            <option value="nada">Nada</option>
+            <option value="interpolacao">Interpolação</option>
+            <option value="property">Property Binding</option>
+            <option value="classstyle">Class e Style Binding</option>
+            <option value="event">Event Binding</option>
+            <option value="twoway">Two-Way Data Binding</option>
+        </select>
+
+    </article>
+
+    <br>
+
+    <article [style.display]="estudo.value == 'interpolacao' ? 'block' : 'none' ">
 
         <h3>Interpolação</h3>
 
@@ -10,8 +29,10 @@
         <img src="{{ urlImagem }}" alt="Imagem">
 
     </article>
+
     <br>
-    <article>
+
+    <article [style.display]="estudo.value == 'property' ? 'block' : 'none' ">
         
         <h3>Property Binding</h3>
 
@@ -19,8 +40,10 @@
         <img bind-src="urlImagem" alt="Imagem">
 
     </article>
+
     <br>
-    <article>
+
+    <article [style.display]="estudo.value == 'classstyle' ? 'block' : 'none' ">
         
         <h3>Class e Style Binding</h3>
 
@@ -46,4 +69,28 @@
         </div>
 
     </article>
+
+    <br>
+
+    <article [style.display]="estudo.value == 'event' ? 'block' : 'none' ">
+
+        <h3>Event Binding</h3>
+    
+    </article>
+
+    <article [style.display]="estudo.value == 'twoway' ? 'block' : 'none' ">
+
+        <h3>Two-Way Data Binding</h3>
+    
+    </article>
+
+    <article [style.display]="estudo.value == 'nada' ? 'block' : 'none' ">
+
+        <div class="alert alert-danger" role="alert">
+            <h3 class="display-1">Resposta errada, vai estudar, vagabundo</h3>
+        </div>
+
+    </article>
+        
+
 </section>
