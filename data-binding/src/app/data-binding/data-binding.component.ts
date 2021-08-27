@@ -10,6 +10,9 @@ export class DataBindingComponent implements OnInit {
   url = 'https://www.google.com';
   urlImagem = 'http://lorempixel.com/400/200/nature/';
   cursoAngular = true;
+  isMouseOver = false;
+  valorAtual: string = "";
+  valorSalvo: string = "";
 
   constructor() { }
 
@@ -22,6 +25,27 @@ export class DataBindingComponent implements OnInit {
 
   getCurtirCurso(): boolean {
     return true;
+  }
+
+  botaoclicado(){
+    alert('Botão clicado!');
+  }
+
+  onKeyUp(evento: KeyboardEventInit){
+    this.valorAtual = (<HTMLInputElement>event?.target).value;
+  }
+
+  salvarValor(valor: string){
+    this.valorSalvo = valor;
+  }
+
+  onMouseOverOut(valor: number){
+    if( valor == 1 ){
+      this.isMouseOver = true;
+    }
+    if( valor == 2 ){
+      this.isMouseOver = false;
+    }
   }
 
 }

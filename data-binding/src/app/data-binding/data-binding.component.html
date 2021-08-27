@@ -75,6 +75,26 @@
     <article [style.display]="estudo.value == 'event' ? 'block' : 'none' ">
 
         <h3>Event Binding</h3>
+        <div>
+            <button (click)="botaoclicado()" class="btn btn-primary">Me clique!</button>
+            <br><br>
+
+            <input type="text" 
+            (keyup)="onKeyUp($event)" 
+            (keyup.enter)="salvarValor(campoInput.value)"
+            (blur)="salvarValor(campoInput.value)"
+            #campoInput >  
+            <p>Valor Salvo: {{valorAtual}}</p>
+            <p>Valor Atual: {{valorSalvo}}</p>
+            <br><br> 
+            
+            <span
+            (mouseover)="onMouseOverOut(1)"
+            (mouseout)="onMouseOverOut(2)" 
+            [class.highlight]="isMouseOver">
+                Passe o mouse sobre mim :3</span>
+
+        </div>
     
     </article>
 
