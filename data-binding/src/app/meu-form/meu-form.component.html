@@ -1,0 +1,142 @@
+<section>
+
+    <article>
+
+        <h3 class="mt-3">Escolha o que estudar:</h3>
+
+        <select #estudo (change)="0" class="form-select">
+            <option value="batata"></option>
+            <option value="nada">Nada</option>
+            <option value="interpolacao">Interpolação</option>
+            <option value="property">Property Binding</option>
+            <option value="classstyle">Class e Style Binding</option>
+            <option value="event">Event Binding</option>
+            <option value="twoway">Two-Way Data Binding</option>
+        </select>
+
+    </article>
+
+    <br>
+
+    <article [style.display]="estudo.value == 'interpolacao' ? 'block' : 'none' ">
+
+        <h3>Interpolação</h3>
+
+        <p>String renderizada com interpolação: {{ url }} </p>
+        <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>
+        <p>Resultado de 2 + 2 é: {{ soma(2,2) }}</p>
+        <p>É verdade que da pra interpolar expressões booleanas? {{ cursoAngular && getCurtirCurso() }}</p>
+        <img src="{{ urlImagem }}" alt="Imagem">
+
+    </article>
+
+    <br>
+
+    <article [style.display]="estudo.value == 'property' ? 'block' : 'none' ">
+        
+        <h3>Property Binding</h3>
+
+        <img [src]="urlImagem" alt="Imagem">
+        <img bind-src="urlImagem" alt="Imagem">
+
+    </article>
+
+    <br>
+
+    <article [style.display]="estudo.value == 'classstyle' ? 'block' : 'none' ">
+        
+        <h3>Class e Style Binding</h3>
+
+        <select #classe (change)="0">
+            <option value="alert-success">Sucessso</option>
+            <option value="alert-info">Info</option>
+            <option value="alert-warning">Alerta</option>
+            <option value="alert-danger">Erro</option>
+        </select>
+        <br><br>
+
+        <div class="alert {{ classe.value }}" role="alert">Texto colorido de acordo comm o escolhido</div>
+
+        <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success' " >Sucessso</div>
+        <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info' " >Info</div>
+        <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning' " >Alerta</div>
+        <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger' " >Erro</div>
+        
+        <br>
+
+        <div class="alert alert-danger" role="alert" [style.display]="classe.value == 'alert-danger' ? 'block' : 'none' ">
+            Essse texto deve aparecer somente em caso de erro.
+        </div>
+
+    </article>
+
+    <br>
+
+    <article [style.display]="estudo.value == 'event' ? 'block' : 'none' ">
+
+        <h3>Event Binding</h3>
+        <div>
+            <button (click)="botaoclicado()" class="btn btn-primary">Me clique!</button>
+            <br><br>
+
+            <input type="text" 
+            (keyup)="onKeyUp($event)" 
+            (keyup.enter)="salvarValor(campoInput.value)"
+            (blur)="salvarValor(campoInput.value)"
+            #campoInput >  
+            <p>Valor Salvo: {{valorAtual}}</p>
+            <p>Valor Atual: {{valorSalvo}}</p>
+            <br><br> 
+            
+            <span
+            (mouseover)="onMouseOverOut(1)"
+            (mouseout)="onMouseOverOut(2)" 
+            [class.highlight]="isMouseOver">
+                Passe o mouse sobre mim :3</span>
+
+        </div>
+    
+    </article>
+
+    <article [style.display]="estudo.value == 'twoway' ? 'block' : 'none' ">
+
+        <h3>Two-Way Data Binding</h3>
+        <div name="ParaVariaveis">
+            <!-- Forma antiga do Two-Way Data Binding 
+            <input type="text"
+            [value]="nome"
+            (input)="nome = $event.target"
+            >
+
+            <input type="text"
+            [ngModel]="nome"
+            (ngModelChange)="nome = $event"
+            >
+            -->
+
+            <!-- 2way data bind, banana na caixa -->
+            <input type="text" [(ngModel)]="nome">
+
+            <p>Você digitou: {{ nome }}</p>
+        </div>
+
+        <div name="ParaObjetos">
+
+            <p>Meu nome é {{ pessoa.nome }} e tenho {{ pessoa.idade }} anos de idade. </p>
+
+            <input type="text" [(ngModel)]="pessoa.nome" >
+            <input type="text" [(ngModel)]="pessoa.idade">
+
+        </div>
+    </article>
+
+    <article [style.display]="estudo.value == 'nada' ? 'block' : 'none' ">
+
+        <div class="alert alert-danger" role="alert">
+            <h3 class="display-1">Resposta errada, vai estudar, vagabundo</h3>
+        </div>
+
+    </article>
+        
+
+</section>
